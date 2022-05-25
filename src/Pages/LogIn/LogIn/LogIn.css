@@ -1,0 +1,31 @@
+/* Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Macondo&display=swap");
+
+.login-container {
+  width: 50%;
+  font-family: "Macondo", cursive;
+}
+
+.login-photo {
+  width: 100px;
+}
+
+.submit-button {
+  background-color: #323848;
+  color: aliceblue;
+}
+.submit-button:hover {
+  background-color: #636c7d;
+  color: aliceblue;
+}
+
+@media only screen and (max-width: 600px) {
+  .login-container {
+    width: 95%;
+  }
+
+  .submit-button:hover {
+    background-color: #636c7d;
+    color: aliceblue;
+  }
+}

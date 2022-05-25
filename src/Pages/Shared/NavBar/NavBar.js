@@ -24,7 +24,7 @@ const NavBar = () => {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav.Link as={Link} to="#deets">LogIn</Nav.Link>
+                        <Nav.Link as={Link} to="/login">LogIn</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
