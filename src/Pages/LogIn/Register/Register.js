@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import loginImage from '../../../images/login.png';
 import Loading from '../../Shared/Loading/Loading';
+import Social from '../../Shared/Social/Social';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -25,6 +26,11 @@ const Register = () => {
     }
     if (user) {
         navigate('/');
+    }
+
+    let errorElement;
+    if (error) {
+        errorElement = <p className='text-center text-danger fw-bold my-3'>{error.massage}</p>
     }
 
     return (
@@ -85,6 +91,8 @@ const Register = () => {
 
                 {errors.password?.type === 'minLength' && <p className='text-danger'>{errors.password?.message}</p>}
                 <input className='my-2 p-2 rounded border-0  submit-button fw-bold' value="Register" type="submit" />
+                {errorElement}
+                <Social></Social>
             </form>
 
             <p className='my-3 text-center'> Already Have an Account?? <Link to='/login' className='text-danger text-decoration-none h6'>Please Login</Link></p>

@@ -6,6 +6,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import { Link, useNavigate } from 'react-router-dom';
+import Social from '../../Shared/Social/Social';
 
 const LogIn = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -27,6 +28,12 @@ const LogIn = () => {
     if (user) {
         navigate('/');
     }
+
+    let errorElement;
+    if (error) {
+        errorElement = <p className='text-center text-danger fw-bold my-3'>{error.massage}</p>
+    }
+
     return (
         <div className='container login-container my-5 p-3 shadow-lg rounded'>
             <div>
@@ -75,7 +82,9 @@ const LogIn = () => {
                 {errors.password?.type === 'minLength' && <p className='text-danger'>{errors.password?.message}</p>}
 
                 <input className='my-2 p-2 rounded border-0  submit-button fw-bold' value="LogIn" type="submit" />
+                {errorElement}
             </form>
+            <Social></Social>
             <p className='my-3'>New to Bick Hero?? <Link to='/register' className='text-danger text-decoration-none h6'>Please Register</Link></p>
         </div>
     );
