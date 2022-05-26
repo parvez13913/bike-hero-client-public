@@ -19,6 +19,10 @@
   color: aliceblue;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 600px) {
   .login-container {
     width: 95%;

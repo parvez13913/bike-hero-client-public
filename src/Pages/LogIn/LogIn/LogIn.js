@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './LogIn.css';
 import loginImage from '../../../images/login.png';
 import { useForm } from "react-hook-form";
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import { Link, useNavigate } from 'react-router-dom';
 import Social from '../../Shared/Social/Social';
+import { toast } from 'react-toastify';
 
 const LogIn = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -17,6 +18,7 @@ const LogIn = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
     const onSubmit = data => {
         console.log(data)
         signInWithEmailAndPassword(data.email, data.password);
@@ -85,7 +87,7 @@ const LogIn = () => {
                 {errorElement}
             </form>
             <Social></Social>
-            <p className='my-3'>New to Bick Hero?? <Link to='/register' className='text-danger text-decoration-none h6'>Please Register</Link></p>
+            <p className='my-3 text-center'>New to Bick Hero?? <Link to='/register' className='text-danger text-decoration-none h6'>Please Register</Link></p>
         </div>
     );
 };
