@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import auth from '../../../../firebase.init';
 import './Purchase.css';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const Purchase = () => {
     const { productsId } = useParams();
@@ -18,21 +20,14 @@ const Purchase = () => {
             .then(result => setPurchaseProduct(result));
     }, [productsId]);
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const onSubmit = data => {
-        const url = `http://localhost:5000/products/${_id}`
-
-        fetch(url, {
-            method: 'PUT',
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
-
-            .then(res => res.json())
-            .then(result => {
-                console.log(result);
+        axios.post('http://localhost:5000/myOrder', data)
+            .then(res => {
+                if (res.statusText === "OK") {
+                    toast("Your Order Confirmed");
+                    reset()
+                }
             })
     }
 
