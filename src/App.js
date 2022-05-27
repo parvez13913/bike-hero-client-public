@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import Purchase from './Pages/Home/Products/Purchase/Purchase';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import Blog from './Pages/Blog/Blog';
+import Portfolio from './Pages/Portfolio/Portfolio';
 
 
 
@@ -23,6 +24,7 @@ function App() {
         <Route path='/login' element={<LogIn></LogIn>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
+        <Route path='/portfolio' element={<Portfolio></Portfolio>}></Route>
         <Route path='/products/:productsId' element={
           <RequireAuth>
             <Purchase></Purchase>

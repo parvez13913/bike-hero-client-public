@@ -1,0 +1,12 @@
+.developer-photo img {
+  width: 200px;
+}
+
+@media only screen and (max-width: 600px) {
+  .about-section {
+    display: inline-block;
+  }
+  .developer-photo {
+    text-align: center;
+  }
+}
