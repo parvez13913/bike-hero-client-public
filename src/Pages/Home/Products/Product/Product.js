@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 
 const Product = ({ products }) => {
     const navigate = useNavigate();
-    const { name, picture, availableQantity, price, minimumOderQantity, description, _id } = products;
+    const { name, picture, availableQantity, price, minimumOderQantity, _id } = products;
 
     const handelBuyNowButton = id => {
-        navigate(`/product/${id}`)
+        navigate(`/products/${id}`)
     }
 
     return (
