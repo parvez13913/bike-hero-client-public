@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
@@ -16,9 +16,13 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-    const onSubmit = data => {
-        console.log(data);
-        createUserWithEmailAndPassword(data.email, data.password);
+
+    const [updateProfile] = useUpdateProfile(auth);
+
+
+    const onSubmit = async (data) => {
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.text, photoURL: data.photUrl });
     };
 
     if (loading) {
@@ -53,6 +57,18 @@ const Register = () => {
                         }
                     })} />
                 {errors.text?.type === 'required' && <p className='text-danger'>{errors.text?.message}</p>}
+                <input
+                    className='my-2 p-2'
+                    type='photUrl'
+                    placeholder='Photo Url'
+                    {...register("photUrl", {
+                        required: {
+                            value: true,
+                            message: 'Phot Url is Required',
+                        }
+                    })} />
+                {errors.photUrl?.type === 'required' && <p className='text-danger'>{errors.photUrl?.message}</p>}
+
                 <input
                     className='my-2 p-2'
                     type='email'
