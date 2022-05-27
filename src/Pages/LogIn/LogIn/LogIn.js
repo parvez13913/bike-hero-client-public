@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
 import './LogIn.css';
 import loginImage from '../../../images/login.png';
 import { useForm } from "react-hook-form";
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Social from '../../Shared/Social/Social';
-import { toast } from 'react-toastify';
 
 const LogIn = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || "/";
     const [
         signInWithEmailAndPassword,
         user,
@@ -28,7 +28,7 @@ const LogIn = () => {
         return <Loading></Loading>
     }
     if (user) {
-        navigate('/');
+        navigate(from, { replace: true });
     }
 
     let errorElement;
