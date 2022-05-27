@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import auth from '../../../../firebase.init';
 import './Purchase.css';
 import axios from 'axios';
+import shoppingCart from '../../../../images/shop.png';
 import { toast } from 'react-toastify';
 
 const Purchase = () => {
@@ -33,7 +34,9 @@ const Purchase = () => {
 
     return (
         <div>
-            <h1 className='mt-5 text-center text-color'>Welcome To Order Page</h1>
+            <div className='text-center'>
+                <h1 className='mt-5 text-color'>Welcome To Order Page</h1>
+            </div>
             <div>
                 <div className="card my-3 w-50 container shadow-lg mt-5">
                     <div className="row g-0">
@@ -52,7 +55,10 @@ const Purchase = () => {
                 </div>
             </div>
             <div className='container mx-auto bg-light my-5 p-3 rounded shadow-lg purchase-container bg-dark'>
-                <h1 className='my-3 text-center text-color'>Order Now : {purchaseProduct?.name}</h1>
+                <div className='text-center '>
+                    <h1 className='my-3 text-color'>Order Now : {purchaseProduct?.name}</h1>
+                    <img className='order-page-icon' src={shoppingCart} alt="shopping_photo" />
+                </div>
                 <form className='d-flex flex-column my-4' onSubmit={handleSubmit(onSubmit)}>
                     <input
                         className='my-2 py-2'
