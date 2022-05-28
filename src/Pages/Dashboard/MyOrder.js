@@ -9,7 +9,6 @@ const MyOrder = () => {
             .then(res => res.json())
             .then(data => setMyOrder(data));
     }, []);
-    console.log(myOrder);
     return (
         <div>
             <h1 className='text-center text-color mb-3'>My Order</h1>
@@ -18,6 +17,8 @@ const MyOrder = () => {
                     myOrder.map(order => <MyOrderDetail
                         key={order._id}
                         order={order}
+                        setMyOrder={setMyOrder}
+                        myOrder={myOrder}
                     />)
                 }
             </div>
