@@ -15,8 +15,8 @@ const MyOrder = () => {
         fetch(`http://localhost:5000/myOrder?email=${email}`, {
             method: 'GET',
             headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
         })
             .then(res => {
                 if (res.status === 401 || res.status === 403) {
