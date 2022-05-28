@@ -3,12 +3,13 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
 import loginImage from '../../../images/login.png';
 import Loading from '../../Shared/Loading/Loading';
 import Social from '../../Shared/Social/Social';
 
 const Register = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const navigate = useNavigate();
     const [
         createUserWithEmailAndPassword,
@@ -17,18 +18,21 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
+    const [token] = useToken(user);
+
     const [updateProfile] = useUpdateProfile(auth);
 
 
     const onSubmit = async (data) => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.text, photoURL: data.photUrl });
+        reset()
     };
 
     if (loading) {
         <Loading></Loading>
     }
-    if (user) {
+    if (token) {
         navigate('/');
     }
 

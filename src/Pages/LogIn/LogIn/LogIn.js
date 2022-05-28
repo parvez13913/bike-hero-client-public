@@ -6,9 +6,11 @@ import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Social from '../../Shared/Social/Social';
+import useToken from '../../../hooks/useToken';
+import { useEffect } from 'react';
 
 const LogIn = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || "/";
@@ -21,13 +23,19 @@ const LogIn = () => {
 
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password);
+        reset()
     };
+
+    const [token] = useToken(user);
+
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, from, navigate]);
 
     if (loading) {
         return <Loading></Loading>
-    }
-    if (user) {
-        navigate(from, { replace: true });
     }
 
     let errorElement;

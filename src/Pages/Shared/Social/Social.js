@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
 import googleLogo from '../../../images/social/google-logo.png';
 import Loading from '../Loading/Loading';
 import './Social.css';
@@ -11,7 +12,9 @@ const Social = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const navigate = useNavigate();
 
-    if (user) {
+    const [token] = useToken(user);
+
+    if (token) {
         navigate('/');
     }
 

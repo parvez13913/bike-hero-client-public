@@ -13,6 +13,7 @@ const NavBar = () => {
 
     const handelLogout = () => {
         signOut(auth);
+        localStorage.removeItem('accessToken');
     }
 
     return (
