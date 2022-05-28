@@ -63,8 +63,8 @@ const Purchase = () => {
                     <input
                         className='my-2 py-2'
                         placeholder='Oder Quantity'
-                        type='number'
-                        {...register("number", {
+                        type='quantity'
+                        {...register("quantity", {
                             required: {
                                 value: true,
                                 message: 'Order Quantity is Required',
@@ -80,21 +80,18 @@ const Purchase = () => {
                             }
 
                         })} />
-                    {errors.number?.type === 'required' && <p className='text-danger'>{errors.number?.message}</p>}
-                    {errors.number?.type === 'min' && <p className='text-danger'>{errors.number?.message}</p>}
-                    {errors.number?.type === 'max' && <p className='text-danger'>{errors.number?.message}</p>}
+                    {errors.quantity?.type === 'required' && <p className='text-danger'>{errors.quantity?.message}</p>}
+                    {errors.quantity?.type === 'min' && <p className='text-danger'>{errors.quantity?.message}</p>}
+                    {errors.quantity?.type === 'max' && <p className='text-danger'>{errors.number?.message}</p>}
                     <input
                         className='my-2 py-2'
-                        type='text'
+                        type='name'
                         defaultValue={user?.displayName}
                         readOnly
                         {...register("name")} />
-                    <input
-                        className='my-2 py-2'
-                        readOnly defaultValue={user?.email}
-                        type="email"
-                        {...register("email")} />
-                    <input className='my-2 py-2' id='Price' readOnly defaultValue={purchaseProduct?.price} type="price" {...register("price")} />
+                    <input className='my-2 py-2' readOnly defaultValue={user?.email} type="email" {...register("email")} />
+                    <input className='my-2 py-2' readOnly defaultValue={purchaseProduct?.price} type="price" {...register("price")} />
+                    <input className='my-2 py-2' readOnly defaultValue={purchaseProduct?.name} type="productName" {...register("productName")} />
                     <input className='my-2 py-2' placeholder='Your Phone Number' type="phoneNumber" {...register("phoneNumber", {
                         required: {
                             value: true,
