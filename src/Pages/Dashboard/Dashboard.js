@@ -4,7 +4,6 @@ import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useAdmin from '../../hooks/useAdmin';
 import useUser from '../../hooks/useUser';
-// import useUser from '../../hooks/UseUser';
 import './Dashboard.css';
 
 const Dashboard = () => {

@@ -9,10 +9,10 @@ const AddReview = () => {
     const [user] = useAuthState(auth);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const onSubmit = data => {
-        axios.post('http://localhost:5000/rattings', data).then(res => {
+        axios.post('http://localhost:5000/reviews', data).then(res => {
             if (res.statusText) {
                 toast.success('Thank For The Feedback');
-                reset()
+                reset();
             }
         })
     }
@@ -27,6 +27,18 @@ const AddReview = () => {
                         readOnly
                         type='text'
                         {...register("name")} />
+                    <input
+                        className='my-2 py-2'
+                        defaultValue={user?.photoURL}
+                        readOnly
+                        type='text'
+                        {...register("photoUrl")} />
+                    <input
+                        className='my-2 py-2'
+                        defaultValue={user?.email}
+                        readOnly
+                        type='text'
+                        {...register("email")} />
 
                     <textarea className='my-2 py-2' placeholder='write a Feedback' type="text"
                         {...register("fidback", {
