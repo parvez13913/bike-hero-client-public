@@ -53,6 +53,9 @@ const Purchase = () => {
                         </div>
                     </div>
                 </div>
+                <div className=' border rounded border-1 p-5 shadow-lg m-5'>
+                    {purchaseProduct?.description}
+                </div>
             </div>
             <div className='container mx-auto bg-light my-5 p-3 rounded shadow-lg purchase-container bg-dark'>
                 <div className='text-center '>

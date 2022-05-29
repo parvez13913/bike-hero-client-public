@@ -4,7 +4,6 @@ import deletePhoto from '../../images/delete.png';
 import './ManageSingleProducts.css';
 
 const ManageSingleProducts = ({ manageSingleProduct, setProducts, products }) => {
-    console.log(manageSingleProduct);
     const { name, availableQantity, picture, _id } = manageSingleProduct;
     const handelDeleteButton = id => {
         const proceed = window.confirm("Do you want to Delete?");
@@ -15,10 +14,13 @@ const ManageSingleProducts = ({ manageSingleProduct, setProducts, products }) =>
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    console.log(data)
                     const remaining = products?.filter(product => product._id !== id);
-                    setProducts(remaining);
-                    toast.error("DELETE");
+                    if (data.acknowledged) {
+                        setProducts(remaining);
+                        toast.error("DELETE");
+                    }
+
                 })
         }
     }
