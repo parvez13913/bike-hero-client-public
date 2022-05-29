@@ -27,7 +27,7 @@ const Purchase = () => {
             .then(res => {
                 if (res.statusText === "OK") {
                     toast("Your Order Confirmed");
-                    reset()
+                    reset();
                 }
             })
     }

@@ -17,6 +17,7 @@ import AddReview from './Pages/Dashboard/AddReview';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import RequireAdmin from './Pages/RequireAdmin/RequireAdmin';
+import AddProduct from './Pages/Dashboard/AddProduct';
 
 
 
@@ -47,6 +48,9 @@ function App() {
           <Route path='myprofile' element={<MyProfile></MyProfile>}></Route>
           <Route path='makeadmin' element={<RequireAdmin>
             <MakeAdmin></MakeAdmin>
+          </RequireAdmin>}></Route>
+          <Route path='addproduct' element={<RequireAdmin>
+            <AddProduct></AddProduct>
           </RequireAdmin>}></Route>
         </Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
