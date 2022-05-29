@@ -18,6 +18,7 @@ import MyProfile from './Pages/Dashboard/MyProfile';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import RequireAdmin from './Pages/RequireAdmin/RequireAdmin';
 import AddProduct from './Pages/Dashboard/AddProduct';
+import ManageProducts from './Pages/Dashboard/ManageProducts';
 
 
 
@@ -52,6 +53,12 @@ function App() {
           <Route path='addproduct' element={<RequireAdmin>
             <AddProduct></AddProduct>
           </RequireAdmin>}></Route>
+          <Route path='manageproduct'
+            element={
+              <RequireAdmin>
+                <ManageProducts></ManageProducts>
+              </RequireAdmin>}>
+          </Route>
         </Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>

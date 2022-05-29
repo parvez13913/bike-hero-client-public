@@ -32,6 +32,11 @@ const Dashboard = () => {
                                 <Link className='text-decoration-none text-black' to='/dashboard/addproduct'>Add A Product</Link>
                             </li>
                         }
+                        {
+                            admin && <li className='dashboard-li'>
+                                <Link className='text-decoration-none text-black' to='/dashboard/manageproduct'>Manage Products</Link>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <div className='col-lg-8'>

@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import useToolsProduct from '../../../hooks/UseToolsProduct';
 import Product from './Product/Product';
 
 const Products = () => {
-    const [products, setProducts] = useState([]);
-
-    useEffect(() => {
-        fetch("http://localhost:5000/products")
-            .then(res => res.json())
-            .then(data => setProducts(data));
-    }, []);
+    const [products] = useToolsProduct();
+    const tools = [...products].reverse();
+    const homePageTools = tools.slice(0, 6);
 
     return (
         <div className='container'>
@@ -17,7 +13,7 @@ const Products = () => {
             </div>
             <div className='row g-4'>
                 {
-                    products.map(products => <Product
+                    homePageTools.map(products => <Product
                         key={products.key}
                         products={products}
                     ></Product>)
