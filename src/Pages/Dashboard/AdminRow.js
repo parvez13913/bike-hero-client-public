@@ -10,18 +10,23 @@ const AdminRow = ({ user, refetch }) => {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 403) {
+                    toast.error("Fail To Make An Admin");
+                }
+                return res.json()
+            })
             .then(data => {
                 if (data.acknowledged) {
                     refetch();
                     toast('Successfully Add Admin');
                 }
                 console.log(data);
-            })
+            });
     }
     return (
         <tr>
-            <th scope="row">1</th>
+            <th scope="row">{0 + 1}</th>
             <td>{email}</td>
             <td>{role !== 'admin' && <button className='border-0 rounded py-2 bg-dark text-white' onClick={makeAdmin}>Make Admin</button>}</td>
             <td>@mdo</td>

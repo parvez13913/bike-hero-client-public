@@ -23,7 +23,7 @@ const LogIn = () => {
 
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password);
-        reset()
+        reset();
     };
 
     const [token] = useToken(user);
