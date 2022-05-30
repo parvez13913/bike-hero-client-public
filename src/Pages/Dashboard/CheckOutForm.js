@@ -9,8 +9,9 @@ const CheckOutForm = ({ data }) => {
     const [cardError, setCardErroe] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const [transactionId, setTransactionId] = useState('');
+    const [prossing, setProssing] = useState(false);
     const [success, setSuccess] = useState('');
-    const { price, name } = data;
+    const { price, name, _id } = data;
 
     useEffect(() => {
         fetch(`http://localhost:5000/create-payment-intent`, {
@@ -44,6 +45,7 @@ const CheckOutForm = ({ data }) => {
         });
         if (error) {
             setCardErroe(error.message);
+            setProssing(true);
         }
         else {
             setCardErroe('');
@@ -64,11 +66,27 @@ const CheckOutForm = ({ data }) => {
         );
         if (intentError) {
             setCardErroe(intentError?.message);
+            setProssing(false);
         }
         else {
             setSuccess('Your payment Confirm');
             setTransactionId(paymentIntent?.id)
             setCardErroe('');
+            const payment = {
+                order: _id,
+                transactionId: paymentIntent?.id,
+            }
+            fetch(`http://localhost:5000/myOrder/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(payment),
+            })
+                .then(res => res.json())
+                .then(data => {
+                    setProssing(false);
+                })
         }
     }
     return (

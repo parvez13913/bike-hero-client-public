@@ -7,7 +7,7 @@ import deletePhoto from '../../images/delete.png';
 
 const MyOrderDetail = ({ order, setMyOrder, myOrder, index }) => {
 
-    const { address, email, quantity, phoneNumber, _id, price } = order;
+    const { address, email, quantity, phoneNumber, _id, price, paid } = order;
 
     const handelDeleteButton = id => {
         const proceed = window.confirm("Do you want to Delete?");
@@ -34,21 +34,30 @@ const MyOrderDetail = ({ order, setMyOrder, myOrder, index }) => {
             <td>
 
                 {
-                    price && <Link to={`/dashboard/payment/${_id}`}>
+                    (order.price && !order.paid) && <Link to={`/dashboard/payment/${_id}`}>
                         <button className='border-0 p-2 rounded'>
                             Pay
                         </button>
                     </Link>
                 }
+                {
+                    (order.price && order.paid) &&
+                    <p className='border-0 p-2 rounded'>
+                        Paid
+                    </p>
+
+                }
 
             </td>
-            <td>
-                <div>
-                    <button onClick={() => handelDeleteButton(_id)} className='border-0 p-2 rounded-pill'>
-                        <img className='delete-btn' src={deletePhoto} alt="deletePhoto" />
-                    </button>
-                </div>
-            </td>
+            {
+                (!order.paid) && <td>
+                    <div>
+                        <button onClick={() => handelDeleteButton(_id)} className='border-0 p-2 rounded-pill'>
+                            <img className='delete-btn' src={deletePhoto} alt="deletePhoto" />
+                        </button>
+                    </div>
+                </td>
+            }
         </tr>
 
 
