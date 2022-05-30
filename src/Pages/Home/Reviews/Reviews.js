@@ -6,7 +6,7 @@ const Reviews = () => {
     const review = [...reviews].reverse();
     const homeReviews = review.slice(0, 6);
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews`)
+        fetch(`https://cryptic-retreat-88156.herokuapp.com/reviews`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data);

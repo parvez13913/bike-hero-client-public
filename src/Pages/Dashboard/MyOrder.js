@@ -12,7 +12,7 @@ const MyOrder = () => {
     const email = user?.email;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myOrder?email=${email}`, {
+        fetch(`https://cryptic-retreat-88156.herokuapp.com/myOrder?email=${email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -32,7 +32,7 @@ const MyOrder = () => {
         <div>
             <h1 className='text-center text-color mb-3'>My Order</h1>
 
-            <table class="table table-striped">
+            <table className="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col"></th>

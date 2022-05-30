@@ -10,7 +10,7 @@ const MyProfile = () => {
     const { photoURL, displayName, email } = user;
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const onSubmit = data => {
-        axios.post(`http://localhost:5000/userinfo`, data).then(res => {
+        axios.post(`https://cryptic-retreat-88156.herokuapp.com/userinfo`, data).then(res => {
             if (res.statusText) {
                 toast.success('Update Your Profile');
                 reset();

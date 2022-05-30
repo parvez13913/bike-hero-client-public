@@ -9,7 +9,7 @@ const AddReview = () => {
     const [user] = useAuthState(auth);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const onSubmit = data => {
-        axios.post('http://localhost:5000/reviews', data).then(res => {
+        axios.post('https://cryptic-retreat-88156.herokuapp.com/reviews', data).then(res => {
             if (res.statusText) {
                 toast.success('Thank For The Feedback');
                 reset();

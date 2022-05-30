@@ -10,7 +10,7 @@ import CheckOutForm from './CheckOutForm';
 const stripePromise = loadStripe('pk_test_51L4iVDJLqOhV2345B4SeITQWsrIV054FlbUdAdnYxLsAfWs5vcD8DxCDEJhZWPm608WgOUbEluCZNCqoDo4dO3Xq00eIClxU1S');
 const Payment = () => {
     const { id } = useParams();
-    const url = `http://localhost:5000/myOrder/${id}`;
+    const url = `https://cryptic-retreat-88156.herokuapp.com/myOrder/${id}`;
 
     const { data, isLoading } = useQuery(['myOrder', id], () => fetch(url, {
         method: 'GET',

@@ -5,7 +5,7 @@ import AdminRow from './AdminRow';
 
 
 const MakeAdmin = () => {
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://cryptic-retreat-88156.herokuapp.com/user', {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -20,7 +20,7 @@ const MakeAdmin = () => {
             <h1 className='text-center my-3 text-color'>Make Admin</h1>
 
             <div>
-                <table class="table table-striped">
+                <table className="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">#</th>

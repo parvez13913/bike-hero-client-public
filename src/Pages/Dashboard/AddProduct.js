@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 const AddProduct = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const onSubmit = data => {
-        axios.post(`http://localhost:5000/products`, data).then(res => {
+        axios.post(`https://cryptic-retreat-88156.herokuapp.com/products`, data).then(res => {
             if (res.statusText) {
                 toast.success('Product Added');
                 reset()

@@ -14,7 +14,7 @@ const CheckOutForm = ({ data }) => {
     const { price, name, _id } = data;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/create-payment-intent`, {
+        fetch(`https://cryptic-retreat-88156.herokuapp.com/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -76,7 +76,7 @@ const CheckOutForm = ({ data }) => {
                 order: _id,
                 transactionId: paymentIntent?.id,
             }
-            fetch(`http://localhost:5000/myOrder/${_id}`, {
+            fetch(`https://cryptic-retreat-88156.herokuapp.com/myOrder/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

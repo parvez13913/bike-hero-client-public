@@ -12,7 +12,7 @@ const MyOrderDetail = ({ order, setMyOrder, myOrder, index }) => {
     const handelDeleteButton = id => {
         const proceed = window.confirm("Do you want to Delete?");
         if (proceed) {
-            const url = `http://localhost:5000/myOrder/${_id}`;
+            const url = `https://cryptic-retreat-88156.herokuapp.com/myOrder/${_id}`;
             axios.delete(url)
                 .then(res => {
                     const remaining = myOrder?.filter(item => item._id !== id);

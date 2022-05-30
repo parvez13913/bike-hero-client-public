@@ -16,7 +16,7 @@ const Purchase = () => {
     const { price } = purchaseProduct;
 
     useEffect(() => {
-        const url = `http://localhost:5000/products/${productsId}`;
+        const url = `https://cryptic-retreat-88156.herokuapp.com/products/${productsId}`;
         fetch(url)
             .then(res => res.json())
             .then(result => setPurchaseProduct(result));
@@ -24,7 +24,7 @@ const Purchase = () => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const onSubmit = data => {
-        axios.post('http://localhost:5000/myOrder', data)
+        axios.post('https://cryptic-retreat-88156.herokuapp.com/myOrder', data)
             .then(res => {
                 if (res.statusText === "OK") {
                     toast("Your Order Confirmed");

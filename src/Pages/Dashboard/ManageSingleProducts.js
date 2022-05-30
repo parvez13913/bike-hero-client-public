@@ -8,7 +8,7 @@ const ManageSingleProducts = ({ manageSingleProduct, setProducts, products }) =>
     const handelDeleteButton = id => {
         const proceed = window.confirm("Do you want to Delete?");
         if (proceed) {
-            const url = `http://localhost:5000/products/${_id}`;
+            const url = `https://cryptic-retreat-88156.herokuapp.com/products/${_id}`;
             fetch(url, {
                 method: 'DELETE'
             })

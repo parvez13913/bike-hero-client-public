@@ -5,7 +5,7 @@ const useUser = user => {
     const [users, setUsers] = useState(false);
     const [userLoading, setUserLoading] = useState(true);
     useEffect(() => {
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://cryptic-retreat-88156.herokuapp.com/user/${email}`, {
             method: 'GEt',
             headers: {
                 'content-type': 'application.json',
