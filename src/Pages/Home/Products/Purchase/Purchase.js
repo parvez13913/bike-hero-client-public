@@ -13,6 +13,7 @@ const Purchase = () => {
     const [user] = useAuthState(auth)
 
     const [purchaseProduct, setPurchaseProduct] = useState([]);
+    const { price } = purchaseProduct;
 
     useEffect(() => {
         const url = `http://localhost:5000/products/${productsId}`;
@@ -48,7 +49,7 @@ const Purchase = () => {
                                 <h2 className="card-title">{purchaseProduct?.name}</h2>
                                 <h5 className="card-title">Available Quantity: {purchaseProduct?.availableQantity}</h5>
                                 <h5 className="card-title">minimum Oder Quantity: {purchaseProduct?.minimumOderQantity}</h5>
-                                <h5 className="card-title">Price: {purchaseProduct?.price}</h5>
+                                <h5 className="card-title">Price: {price}</h5>
                             </div>
                         </div>
                     </div>

@@ -4,7 +4,6 @@ import './HomeReview.css';
 
 
 const HomeReview = ({ homeReview }) => {
-    console.log(homeReview)
     const { fidback, name, ratting, photoUrl, email } = homeReview;
     return (
         <div className='d-grid col-sm-12 col-md-6 col-lg-4 mb-5'>

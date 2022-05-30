@@ -21,7 +21,6 @@ const AdminRow = ({ user, refetch }) => {
                     refetch();
                     toast('Successfully Add Admin');
                 }
-                console.log(data);
             });
     }
     return (

@@ -24,6 +24,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './firebase.init';
 import useAdmin from './hooks/useAdmin';
 import useUser from './hooks/useUser';
+import Payment from './Pages/Dashboard/Payment ';
 
 
 
@@ -60,6 +61,7 @@ function App() {
           <Route path='myOrder' element={<RequireUser>
             <MyOrder></MyOrder>
           </RequireUser>}></Route>
+          <Route path='payment/:id' element={<Payment></Payment>}></Route>
           <Route path='makeadmin' element={<RequireAdmin>
             <MakeAdmin></MakeAdmin>
           </RequireAdmin>}></Route>

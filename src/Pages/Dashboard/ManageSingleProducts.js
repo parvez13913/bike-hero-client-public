@@ -14,7 +14,6 @@ const ManageSingleProducts = ({ manageSingleProduct, setProducts, products }) =>
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     const remaining = products?.filter(product => product._id !== id);
                     if (data.acknowledged) {
                         setProducts(remaining);

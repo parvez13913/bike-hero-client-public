@@ -15,7 +15,7 @@ const MyOrder = () => {
         fetch(`http://localhost:5000/myOrder?email=${email}`, {
             method: 'GET',
             headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
         })
             .then(res => {
@@ -31,17 +31,36 @@ const MyOrder = () => {
     return (
         <div>
             <h1 className='text-center text-color mb-3'>My Order</h1>
-            <div>
-                {
-                    myOrder.map(order => <MyOrderDetail
-                        key={order._id}
-                        order={order}
-                        setMyOrder={setMyOrder}
-                        myOrder={myOrder}
-                    />)
-                }
-            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Pay</th>
+                        <th scope="col">Cancel</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    {
+                        myOrder.map((order, index) => <MyOrderDetail
+                            key={order._id}
+                            order={order}
+                            setMyOrder={setMyOrder}
+                            myOrder={myOrder}
+                            index={index}
+                        />)
+                    }
+                </tbody>
+            </table>
         </div>
+
     );
 };
 
