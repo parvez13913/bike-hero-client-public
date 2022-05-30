@@ -1,0 +1,9 @@
+.slider-image img {
+  width: 110px;
+}
+
+@media only screen and (max-width: 600px) {
+  .slider-image img {
+    width: 70px;
+  }
+}
