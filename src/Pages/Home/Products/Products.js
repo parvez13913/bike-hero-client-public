@@ -14,7 +14,7 @@ const Products = () => {
             <div className='row g-4'>
                 {
                     homePageTools.map(products => <Product
-                        key={products.key}
+                        key={products._id}
                         products={products}
                     ></Product>)
                 }

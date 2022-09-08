@@ -7,7 +7,7 @@ const Product = ({ products }) => {
     const { name, picture, availableQantity, price, minimumOderQantity, _id } = products;
 
     const handelBuyNowButton = id => {
-        navigate(`/products/${id}`)
+        navigate(`/products/${id}`);
     }
 
     return (

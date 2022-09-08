@@ -7,24 +7,31 @@ import './Purchase.css';
 import axios from 'axios';
 import shoppingCart from '../../../../images/shop.png';
 import { toast } from 'react-toastify';
+import Loading from '../../../Shared/Loading/Loading';
 
 const Purchase = () => {
     const { productsId } = useParams();
     const [user] = useAuthState(auth)
 
     const [purchaseProduct, setPurchaseProduct] = useState([]);
+    const [isLoding, setIsLoading] = useState(false);
     const { price } = purchaseProduct;
 
     useEffect(() => {
+        setIsLoading(true);
         const url = `https://cryptic-retreat-88156.herokuapp.com/products/${productsId}`;
         fetch(url)
             .then(res => res.json())
             .then(result => setPurchaseProduct(result));
+        setIsLoading(false);
     }, [productsId]);
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const onSubmit = data => {
-        axios.post('https://cryptic-retreat-88156.herokuapp.com/myOrder', data)
+        const { price, name, ...rest } = purchaseProduct;
+        const { phoneNumber, address, quantity, ...restData } = data;
+        const orderData = { price, name, phoneNumber, address, quantity };
+        axios.post('https://cryptic-retreat-88156.herokuapp.com/myOrder', orderData)
             .then(res => {
                 if (res.statusText === "OK") {
                     toast("Your Order Confirmed");
@@ -32,7 +39,9 @@ const Purchase = () => {
                 }
             })
     }
-
+    if (isLoding) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <div className='text-center'>
